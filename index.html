@@ -6,100 +6,105 @@
   <title>Hollow Knight : Silksong Countdown</title>
   <style>
     /* General Reset */
-    :root{
-  --bg-1:#0b0b10; /* near-black */
-  --bg-2:#160b17; /* deep plum */
-  --bg-3:#2a1030; /* royal violet */
-  --gold:#f1c96b;
-  --accent:#f7e6a8;
-  --muted:#b7a8d0;
-  --card:rgba(255,255,255,.06);
-  --glass:rgba(255,255,255,.08);
-}
-*{box-sizing:border-box}
-html,body{height:100%; margin:0; padding:0;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  color: #f1eefc;
-  font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: url("./asset/bg.jpg") no-repeat center center;
-  background-size: cover;
-  overflow: hidden;
-  position: relative;
-}
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      background: url("your-background.jpg") no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 1rem;
+    }
 
-/* dark overlay to keep text readable */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45); /* darken background */
-  z-index: 0;
-}
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
 
-.stage{
-  position:relative; height:100%; display:grid; place-items:center; padding:clamp(16px,4vw,40px);
-  z-index: 1; /* above overlay */
-}
-.wrap{position:relative; width:min(1100px,92vw); text-align:center; z-index:2}
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: white; /* ensures release date stays white */
+    }
 
-.title{
-  font-family:Cinzel, serif; letter-spacing:.04em;
-  font-weight:800; font-size:clamp(26px,6vw,52px); line-height:1.1; margin:0 0 .3rem;
-  text-shadow:0 2px 18px rgba(0,0,0,.55);
-}
-.subtitle{
-  font-size:clamp(14px,3vw,18px);
-  color:#ffffff; /* pure white */
-  text-shadow:0 2px 6px rgba(0,0,0,.6); /* improves readability */
-  margin:.1rem 0 1.6rem;
-}
+    .countdown {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-.countdown{
-  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px;
-  width:100%;
-}
-.unit{
-  backdrop-filter:saturate(130%) blur(6px);
-  background:linear-gradient(180deg, var(--glass), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:20px; padding:16px 10px 14px;
-  position:relative;
-  box-shadow:0 10px 25px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-}
-.value{
-  font-size:clamp(22px,7vw,48px);
-  font-weight:800;
-  font-variant-numeric:tabular-nums;
-  letter-spacing:.02em;
-}
-.label{
-  margin-top:4px;
-  font-size:clamp(9px,3vw,12px);
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  color:#d9cfee;
-}
+    .time-box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      width: 120px;
+      min-width: 100px;
+    }
 
-.note{margin-top:14px; color:#d7caec; font-size:12px; opacity:.85}
+    .time-box span {
+      display: block;
+    }
 
-/* Decorative art */
-.art{position:absolute; inset:0; pointer-events:none; z-index:0;}
-svg{position:absolute; width:140vmax; height:140vmax; left:50%; top:48%; transform:translate(-50%,-50%) rotate(-8deg); opacity:.28; filter:drop-shadow(0 30px 80px rgba(0,0,0,.55));}
-.glow{position:absolute; inset:-10vmax; background:radial-gradient(60vmax 40vmax at 50% 55%, rgba(247,230,168,.08), transparent 60%); mix-blend-mode:screen;}
+    .time {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ff4b4b;
+    }
 
-.badge{
-  position:fixed; right:14px; bottom:14px; font-size:12px; color:#d6c6ff80; z-index:2;
-}
+    .label {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
 
-/* Responsive tweaks */
-@media (max-width:640px){
-  .countdown{grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px;}
-  .title{font-size:clamp(22px,8vw,40px);}
-  .subtitle{font-size:clamp(12px,4vw,16px);}
-}
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
 
+      p {
+        font-size: 1rem;
+      }
+
+      .time-box {
+        width: 100px;
+        padding: 1rem;
+      }
+
+      .time {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .time-box {
+        width: 90px;
+        padding: 0.8rem;
+      }
+
+      .time {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
